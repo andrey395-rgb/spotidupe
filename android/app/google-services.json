@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "135190983166",
+    "project_id": "spotidupe1",
+    "storage_bucket": "spotidupe1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135190983166:android:a82fc261b01e62a750d0af",
+        "android_client_info": {
+          "package_name": "com.chub.spotidupe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQtG0OXHZ2a-wrPYBnrSZUEDF2NYvUvwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135190983166:android:a416461e707c8c6450d0af",
+        "android_client_info": {
+          "package_name": "com.example.spotidupe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQtG0OXHZ2a-wrPYBnrSZUEDF2NYvUvwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
