@@ -7,7 +7,7 @@ import 'package:spotidupe/core/configs/theme/app_colors.dart';
 import 'package:spotidupe/data/models/auth/create_user_req.dart';
 import 'package:spotidupe/domain/usecases/auth/signup.dart';
 import 'package:spotidupe/presentation/authentication/pages/signin.dart';
-import 'package:spotidupe/presentation/root/pages/root.dart';
+import 'package:spotidupe/presentation/home/pages/home.dart';
 import 'package:spotidupe/service_locator.dart';
 
 class SignupPage extends StatelessWidget {
@@ -75,7 +75,7 @@ class SignupPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const RootPage()),
+                                  const HomePage()),
                           (route) => false,
                         );
                       },
@@ -192,7 +192,7 @@ class SignupPage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => const SigninPage()));
+                        builder: (BuildContext context) => SigninPage()));
               },
               style: TextButton.styleFrom(
                 foregroundColor: AppColors.primary, // Change the color here

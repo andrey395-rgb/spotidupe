@@ -4,10 +4,17 @@ import 'package:spotidupe/common/widgets/appbar/app_bar.dart';
 import 'package:spotidupe/common/widgets/button/basic_app_button.dart';
 import 'package:spotidupe/core/configs/assets/app_vectors.dart';
 import 'package:spotidupe/core/configs/theme/app_colors.dart';
+import 'package:spotidupe/data/models/auth/signin_user_req.dart';
+import 'package:spotidupe/domain/usecases/auth/signin.dart';
 import 'package:spotidupe/presentation/authentication/pages/signup.dart';
+import 'package:spotidupe/presentation/home/pages/home.dart';
+import 'package:spotidupe/service_locator.dart';
 
 class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+ SigninPage({super.key});
+
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +27,7 @@ class SigninPage extends StatelessWidget {
           width: 40,
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,7 +40,7 @@ class SigninPage extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            _fullNameField(context),
+            _emailField(context),
             const SizedBox(
               height: 20,
             ),
@@ -41,7 +48,31 @@ class SigninPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            BasicAppButton(onPressed: () {}, title: 'Sign In')
+            BasicAppButton(
+                  onPressed: () async {
+                    var result = await sl<SigninUseCase>().call(
+                      params: SigninUserReq(
+                        email: _email.text.toString(),
+                        password: _password.text.toString(),
+                      ),
+                    );
+                    result.fold(
+                      (l) {
+                        var snackbar = SnackBar(content: Text(l));
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      },
+                      (r) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const HomePage()),
+                          (route) => false,
+                        );
+                      },
+                    );
+                  },
+                  title: 'Sign In'),
           ],
         ),
       ),
@@ -81,8 +112,9 @@ class SigninPage extends StatelessWidget {
       );
   }
 
-  Widget _fullNameField(BuildContext context) {
+  Widget _emailField(BuildContext context) {
     return TextField(
+      controller: _email,
       decoration: const InputDecoration(hintText: 'Enter Username or Email')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -90,6 +122,8 @@ class SigninPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: _password,
+
       decoration: const InputDecoration(hintText: 'Password')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );

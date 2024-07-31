@@ -133,7 +133,7 @@ class ChooseMode extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const SignupOrSignin()));
+                                  const SignupOrSigninPage()));
                     },
                     title: 'Continue'
                 )

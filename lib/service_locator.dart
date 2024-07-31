@@ -1,21 +1,70 @@
 import 'package:get_it/get_it.dart';
 import 'package:spotidupe/data/repository/auth/auth_repository_impl.dart';
 import 'package:spotidupe/data/sources/auth/auth_firebase_service.dart';
+import 'package:spotidupe/data/sources/songs/song_firebase_service.dart';
 import 'package:spotidupe/domain/repository/auth/auth.dart';
+import 'package:spotidupe/domain/usecases/auth/signin.dart';
 import 'package:spotidupe/domain/usecases/auth/signup.dart';
+import 'package:spotidupe/domain/usecases/song/get_new_songs.dart';
+
+
+import 'data/repository/song/song_repository_impl.dart';
+import 'domain/repository/song/song.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+ 
+ 
+ sl.registerSingleton<AuthFirebaseService>(
+  AuthFirebaseServiceImpl()
+ );
 
-  sl.registerSingleton<AuthFirebaseService>(
-    AuthFirebaseServiceImpl()
-    );
-  sl.registerSingleton<AuthRespository>(
-    AuthRepositoryImpl()
-    );
-  sl.registerSingleton<SignupUseCase>(
-    SignupUseCase()
-    );
+ sl.registerSingleton<SongFirebaseService>(
+  SongFirebaseServiceImpl()
+ );
+ 
 
+ sl.registerSingleton<AuthRespository>(
+  AuthRepositoryImpl()
+ );
+
+ sl.registerSingleton<SongsRepository>(
+  SongRepositoryImpl()
+ );
+
+
+
+ sl.registerSingleton<SignupUseCase>(
+  SignupUseCase()
+ );
+
+ sl.registerSingleton<SigninUseCase>(
+  SigninUseCase()
+ );
+
+ sl.registerSingleton<GetNewsSongsUseCase>(
+  GetNewsSongsUseCase()
+ );
+
+//  sl.registerSingleton<GetPlayListUseCase>(
+//   GetPlayListUseCase()
+//  );
+
+//  sl.registerSingleton<AddOrRemoveFavoriteSongUseCase>(
+//   AddOrRemoveFavoriteSongUseCase()
+//  );
+
+//  sl.registerSingleton<IsFavoriteSongUseCase>(
+//   IsFavoriteSongUseCase()
+//  );
+
+//  sl.registerSingleton<GetUserUseCase>(
+//   GetUserUseCase()
+//  );
+
+//  sl.registerSingleton<GetFavoriteSongsUseCase>(
+//   GetFavoriteSongsUseCase()
+//  );
+ 
 }
