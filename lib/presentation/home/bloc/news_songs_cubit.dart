@@ -1,24 +1,8 @@
-import 'dart:ffi';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotidupe/domain/usecases/song/get_new_songs.dart';
 import 'package:spotidupe/presentation/home/bloc/new_songs_state.dart';
 import 'package:spotidupe/service_locator.dart';
-
-// class NewsSongsCubit extends Cubit<NewsSongsState> {
-//   NewsSongsCubit() : super(NewsSongsLoading());
-
-//   Future<void> getNewSongs() async {
-//     var returnedSongs = await sl<GetNewsSongsUseCase>().call();
-
-//     returnedSongs.fold((l) {
-//       emit(NewsSongsLoadFailure());
-//     }, 
-//     (data) {
-//       emit(NewsSongsLoaded(songs: data));
-//     });
-//   }
-// }
 
 class NewsSongsCubit extends Cubit<NewsSongsState> {
 

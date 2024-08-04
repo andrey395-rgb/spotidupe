@@ -5,12 +5,9 @@ import 'package:spotidupe/domain/repository/auth/auth.dart';
 
 import '../../../service_locator.dart';
 
-class SigninUseCase implements Usecase<Either,SigninUserReq> {
-
-
+class GetUserUseCase implements Usecase<Either, dynamic> {
   @override
-  Future<Either> call({SigninUserReq ? params}) async {
-    return sl<AuthRespository>().signin(params!);
+  Future<Either> call({params}) async {
+    return await sl<AuthRespository>().getUser();
   }
-
 }

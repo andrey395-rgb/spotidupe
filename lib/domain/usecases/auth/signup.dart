@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:spotidupe/core/configs/usecase/usecase.dart';
+import 'package:spotidupe/core/usecase/usecase.dart';
 import 'package:spotidupe/data/models/auth/create_user_req.dart';
 import 'package:spotidupe/domain/repository/auth/auth.dart';
 

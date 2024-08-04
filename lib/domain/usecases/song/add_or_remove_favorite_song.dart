@@ -3,10 +3,11 @@ import 'package:spotidupe/core/usecase/usecase.dart';
 import 'package:spotidupe/domain/repository/song/song.dart';
 import 'package:spotidupe/service_locator.dart';
 
-class GetNewsSongsUseCase implements Usecase<Either,dynamic> {
-
+class AddOrRemoveFavoriteSongUseCase implements Usecase<Either,String> {
   @override
-  Future<Either> call({params}) async{
-    return await sl<SongsRepository>().getNewsSongs();
+  Future<Either> call({String ? params}) async {
+    return await sl<SongsRepository>().addOrRemoveFavoriteSongs(params!);
   }
 }
+
+  
